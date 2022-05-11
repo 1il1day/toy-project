@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>고기값 계산기</title>
+    <link rel="stylesheet" href="reset.css">
+    <style>
+        body{background: aliceblue;}
+        h2{position: relative; text-align: center; margin: 11vw 0; font-size: 8.3333vw; font-weight: 600; color: royalblue;}
+        h2::after{content:""; display: inline-block; background: skyblue; width: 50%; height: 8.3333vw; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); z-index: -1; opacity: 0.3;}
+
+        #userInput{text-align: center; margin-top: 9vw;}
+        #userInput p{font-size: 7vw;}
+        #userInput p:nth-of-type(2){margin-top: 5vw;}
+        #userInput input{font-size: 11.1111vw; height: 16.6667vw; border: 0.5556vw solid skyblue; outline: none; padding-left: 5.5556vw; width: 80vw;}
+        #userInput p button{width: 75vw; height: 18vw; margin-top: 8.3333vw; background: skyblue; border: none; font-size: 7vw; font-weight: 500; color: #fff; transition: 0.01s; font-family: 'IM_Hyemin-Bold';}
+        #userInput p button:hover{background: pink;}
+        #userInput p button:active{transform: scale(0.98);}
+
+        #userResult{margin-top: 10vw;}
+        #userResult p{font-size: 7vw; font-weight: 600; text-align: right;  padding: 0 5vw;}
+        #userResult p span{color: tomato;}
+    </style>
+</head>
+<body>
+    <h2>고기값 계산기</h2>
+
+    <div id="userInput">
+        <p>그램(g) 수를 입력하세요</p>
+        <input type="text" class="gram">
+        <p>가격을 입력하세요</p>
+        <input type="text" class="price">
+        <p><button class="cal">계산하기</button></p>
+    </div>
+
+    <div id="userResult">
+        <p>100g 당 <span class="result">0</span>원입니다.</p>
+        <p>200g(1인분) 당 <span class="result2">0</span>원입니다.</p>
+    </div>
+    
+    <script>
+        let gram = document.querySelector('.gram');
+        let price = document.querySelector('.price');
+        let cal = document.querySelector('.cal');
+        let result = document.querySelector('.result');
+        let result2 = document.querySelector('.result2');
+
+        function userResult(){
+            let result1 = (price.value/gram.value)*100
+            result.innerHTML = Math.ceil(result1*100)/100;
+            result2.innerHTML = Math.ceil(result1*2*100)/100;
+        }
+
+        cal.addEventListener('click',userResult)
+
+    </script>
+</body>
+</html>
